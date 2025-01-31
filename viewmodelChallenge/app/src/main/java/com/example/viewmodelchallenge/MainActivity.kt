@@ -22,13 +22,15 @@ class MainActivity : AppCompatActivity() {
         factory= mainViewModelFactory(10)
 
         viewmodel= ViewModelProvider(this,factory).get(mainviewmodel::class.java)
-        binding.textView.text=viewmodel.gettotal().toString()
-
+//        binding.textView.text=viewmodel.gettotal().toString()
+        viewmodel.total.observe(this,{
+            binding.textView.text=it.toString()
+        })
 
         binding.button.setOnClickListener{
 
             viewmodel.settotal(binding.editTextNumber.text.toString().toInt())
-            binding.textView.text=viewmodel.gettotal().toString()
+//            binding.textView.text=viewmodel.gettotal().toString()
         }
 
     }

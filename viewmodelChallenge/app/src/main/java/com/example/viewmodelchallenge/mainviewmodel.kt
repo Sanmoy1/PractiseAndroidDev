@@ -1,20 +1,21 @@
 package com.example.viewmodelchallenge
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class mainviewmodel(startingTotal:Int): ViewModel()  {
-    private var total=0
+     var total=MutableLiveData<Int>()
 
     init {
-        total=startingTotal
+        total.value=startingTotal
     }
 
-    fun gettotal(): Int {
-        return total
-    }
+//    fun gettotal(): MutableLiveData<Int> {
+//        return total
+//    }
     fun settotal(number: Int)
     {
-        total+=number
+        total.value=(total.value)?.plus(number)
 //        return total
     }
 
